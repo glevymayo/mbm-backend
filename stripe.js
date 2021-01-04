@@ -23,7 +23,8 @@ async function createCard(req, res){
             exp_month: req.body.exp_month,
             exp_year: req.body.exp_year,
             cvc: req.body.cvc,
-            currency: 'usd'
+            currency: 'usd',
+            name: req.body.name
         }}
       );
 }
@@ -34,8 +35,8 @@ async function createSubscription (req, res) {
         customer: req.body.customer_id,
         items: [{price: req.body.price_id}],
       })
-      .then(subscription => console.log(subscription))
-      .catch(error => console.log('error', error))
+      .then(subscription => res.json(subscription))
+      .catch(error => res.json(error))
 }
 
 async function createProduct (req, res) {
